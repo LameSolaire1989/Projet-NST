@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>NST Consultation – Formulaire Concours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="form-shell">
+    <div class="form-header">
+      <div class="logo-wrapper">
+        <img src="logo-nst.png" alt="NST Consultation" class="logo-nst" />
+      </div>
+      <div class="form-title-group">
+        <h1>Participation – Concours NST</h1>
+        <p>Kiosque Arcade • Robopack &amp; Intune</p>
+      </div>
+      <div class="badge-nst">NST Consultation • High-Tech</div>
+    </div>
+
+    <form id="nst-form">
+      <div class="form-field">
+        <label for="fullName">Nom complet</label>
+        <div class="input-shell">
+          <input type="text" id="fullName" name="NomComplet" placeholder="Prénom Nom" required />
+        </div>
+      </div>
+
+      <div class="field-row-2">
+        <div class="form-field">
+          <label for="email">Courriel</label>
+          <div class="input-shell">
+            <input type="email" id="email" name="Courriel" placeholder="prenom.nom@domaine.ca" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="commission">Commission scolaire</label>
+          <div class="input-shell">
+            <input
+              type="text"
+              id="commission"
+              name="CommissionScolaire"
+              list="css-list"
+              placeholder="Tapez pour chercher votre CSS…"
+              autocomplete="off"
+              required
+            />
+            <datalist id="css-list">
+              <option value="CS Eastern Townships"></option>
+              <option value="CSS au Cœur-des-Vallées"></option>
+              <option value="CSS de Charlevoix"></option>
+              <option value="CSS de Kamouraska-Rivière-du-Loup"></option>
+              <option value="CSS de l'Énergie"></option>
+              <option value="CSS de l'Or-et-des-Bois"></option>
+              <option value="CSS de la Beauce-Etchemin"></option>
+              <option value="CSS de la Capitale"></option>
+              <option value="CSS de la Côte-du-Sud"></option>
+              <option value="CSS De La Jonquière"></option>
+              <option value="CSS de la Moyenne-Côte-Nord"></option>
+              <option value="CSS de la Riveraine"></option>
+              <option value="CSS de la Rivière-du-Nord"></option>
+              <option value="CSS de la Vallée-des-Tisserands"></option>
+              <option value="CSS de Montréal"></option>
+              <option value="CSS de Portneuf"></option>
+              <option value="CSS de Rouyn-Noranda"></option>
+              <option value="CSS de Saint-Hyacinthe"></option>
+              <option value="CSS de Sorel-Tracy"></option>
+              <option value="CSS des Affluents"></option>
+              <option value="CSS des Appalaches"></option>
+              <option value="CSS des Bois-Francs"></option>
+              <option value="CSS des Chic-Chocs"></option>
+              <option value="CSS des Découvreurs"></option>
+              <option value="CSS des Grandes-Seigneuries"></option>
+              <option value="CSS des Hautes-Rivières"></option>
+              <option value="CSS des Hauts-Bois-de-l'Outaouais"></option>
+              <option value="CSS des Sommets"></option>
+              <option value="CSS des Premières-Seigneuries"></option>
+              <option value="CSS des Rives-du-Saguenay"></option>
+              <option value="CSS des Hauts-Cantons"></option>
+              <option value="CSS des Îles"></option>
+              <option value="CSS des Laurentides"></option>
+              <option value="CSS des Mille-Îles"></option>
+              <option value="CSS de la Pointe-de-l'Île"></option>
+              <option value="CSS des Monts-et-Marées"></option>
+              <option value="CSS des Navigateurs"></option>
+              <option value="CSS des Patriotes"></option>
+              <option value="CSS des Phares"></option>
+              <option value="CSS des Portages-de-l'Outaouais"></option>
+              <option value="CSS des Samares"></option>
+              <option value="CSS des Trois-Lacs"></option>
+              <option value="CSS du Fer"></option>
+              <option value="CSS du Fleuve-et-des-Lacs"></option>
+              <option value="CSS du Lac-Saint-Jean"></option>
+              <option value="CSS du Lac-Témiscamingue"></option>
+              <option value="CSS du Littoral"></option>
+              <option value="CSS du Pays-des-Bleuets"></option>
+              <option value="CSS du Val-des-Cerfs"></option>
+              <option value="CSS Harricana"></option>
+              <option value="CSS Marguerite-Bourgeoys"></option>
+              <option value="CSS Marie-Victorin"></option>
+              <option value="CSS René-Lévesque"></option>
+              <option value="CSS des Hautes-Laurentides"></option>
+              <option value="CSS de Laval"></option>
+              <option value="Autre"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row-2">
+        <div class="form-field">
+          <label>Déjà client NST ?</label>
+          <div class="radio-group">
+            <div class="toggle-pill" data-toggle="client-nst" data-value="oui">
+              <label class="toggle-option is-active" data-value="oui">
+                <input type="radio" name="DejaClientNST" value="Oui" checked />
+                Oui
+              </label>
+              <label class="toggle-option" data-value="non">
+                <input type="radio" name="DejaClientNST" value="Non" />
+                Non
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Déjà client RoboPack ?</label>
+          <div class="radio-group">
+            <div class="toggle-pill" data-toggle="client-robo" data-value="non">
+              <label class="toggle-option" data-value="oui">
+                <input type="radio" name="DejaClientRoboPack" value="Oui" />
+                Oui
+              </label>
+              <label class="toggle-option is-active" data-value="non">
+                <input type="radio" name="DejaClientRoboPack" value="Non" checked />
+                Non
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="score">Score obtenu</label>
+        <div class="input-shell">
+          <input type="number" id="score" name="ScoreObtenu" min="0" step="1" placeholder="Ex. 975450" required />
+        </div>
+        <p class="help-text">Saisir le score affiché sur la borne (sans espace).</p>
+      </div>
+
+      <input type="hidden" name="SourceFormulaire" value="Kiosque Arcade" />
+
+      <div class="form-footer">
+        <button type="submit" class="submit-btn">Envoyer la participation</button>
+        <div class="status-message" id="statusMessage"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Animation de succès -->
+  <div id="successToast" class="success-toast">
+    <div class="success-icon">
+      <span class="checkmark-stem"></span>
+      <span class="checkmark-kick"></span>
+    </div>
+    <div class="success-text">Score enregistré !</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,124 @@
+{
+  "name": "Arcade Cyberpunk",
+  "dataColors": [
+    "#00FFF9",
+    "#FF00FF",
+    "#00D4FF",
+    "#FFE600",
+    "#39FF14",
+    "#FF006E",
+    "#7B2CBF",
+    "#00F5D4"
+  ],
+  "background": "#0D0D14",
+  "foreground": "#E0E0FF",
+  "tableAccent": "#00FFF9",
+  "good": "#39FF14",
+  "neutral": "#FFE600",
+  "bad": "#FF006E",
+  "visualStyles": {
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#0D0D14"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#00FFF9"
+              }
+            },
+            "fontFamily": "Segoe UI",
+            "fontSize": 28
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#16162A"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#00FFF9"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "#16162A"
+              }
+            },
+            "fontSize": 11,
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "values": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#E0E0FF"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "#0D0D14"
+              }
+            },
+            "fontSize": 11,
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "grid": [
+          {
+            "gridVertical": true,
+            "gridVerticalColor": {
+              "solid": {
+                "color": "#1E1E2E"
+              }
+            },
+            "gridVerticalWeight": 1,
+            "gridHorizontal": true,
+            "gridHorizontalColor": {
+              "solid": {
+                "color": "#1E1E2E"
+              }
+            },
+            "gridHorizontalWeight": 1
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#0D0D14"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}
