@@ -4,26 +4,41 @@
   <meta charset="UTF-8" />
   <title>NST Consultation – Formulaire Concours</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="form-shell">
     <div class="form-header">
       <div class="logo-wrapper">
-        <img src="logo-nst.png" alt="NST Consultation" class="logo-nst" />
       </div>
+
+
+
       <div class="form-title-group">
-        <h1>Participation – Concours NST</h1>
+        <h1>Participation<br />Concours NST</h1>
         <p>Kiosque Arcade • Robopack &amp; Intune</p>
       </div>
-      <div class="badge-nst">NST Consultation • High-Tech</div>
+
+
+      <div class="header-right">
+        <!-- <div class="badge-nst">NST Consultation • High-Tech</div> -->
+        <img src="images/logo-nst.png" alt="NST Consultation" class="logo-nst" />
+        <img src="images/logo-robopack.png" alt="RoboPack" class="logo-robopack" />
+      </div>
+
+
     </div>
+
 
     <form id="nst-form">
       <div class="form-field">
         <label for="fullName">Nom complet</label>
         <div class="input-shell">
-          <input type="text" id="fullName" name="NomComplet" placeholder="Prénom Nom" required />
+          <input type="text" id="fullName" name="NomComplet" autocomplete="name" placeholder="Prénom Nom" required />
         </div>
       </div>
 
@@ -31,7 +46,7 @@
         <div class="form-field">
           <label for="email">Courriel</label>
           <div class="input-shell">
-            <input type="email" id="email" name="Courriel" placeholder="prenom.nom@domaine.ca" required />
+            <input type="email" id="email" name="Courriel" autocomplete="email" placeholder="prenom.nom@domaine.ca" required />
           </div>
         </div>
 
@@ -149,6 +164,22 @@
           <input type="number" id="score" name="ScoreObtenu" min="0" step="1" placeholder="Ex. 975450" required />
         </div>
         <p class="help-text">Saisir le score affiché sur la borne (sans espace).</p>
+      </div>
+
+      <div class="form-field">
+        <label>Preuve visuelle (Photo du score)</label>
+        <input type="file" id="scorePhoto" accept="image/*" capture="environment" hidden />
+        <button type="button" class="photo-btn" id="photoButton">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+          Prendre mon score en photo
+        </button>
+        <div class="photo-preview-container" id="photoPreviewContainer" style="display: none;">
+          <img id="photoPreview" src="" alt="Aperçu du score" />
+          <button type="button" class="photo-remove-btn" id="photoRemoveBtn">&times;</button>
+        </div>
       </div>
 
       <input type="hidden" name="SourceFormulaire" value="Kiosque Arcade" />
