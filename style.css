@@ -304,6 +304,66 @@ option.region-label {
   opacity: 1;
 }
 
+/* --- AUTOCOMPLETE --- */
+.autocomplete-shell {
+  position: relative;
+}
+
+.autocomplete-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  background: rgba(13, 13, 20, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 16px rgba(160, 233, 255, 0.2);
+  overflow-y: auto;
+  z-index: 100;
+  list-style: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-5px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.autocomplete-list.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.autocomplete-item {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.autocomplete-item:hover, .autocomplete-item.is-active {
+  background: rgba(160, 233, 255, 0.15);
+  color: var(--accent);
+}
+
+/* Custom scrollbar for autocomplete */
+.autocomplete-list::-webkit-scrollbar {
+  width: 6px;
+}
+.autocomplete-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.autocomplete-list::-webkit-scrollbar-thumb {
+  background: rgba(160, 233, 255, 0.3);
+  border-radius: 4px;
+}
+.autocomplete-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(160, 233, 255, 0.5);
+}
+
 .form-field:has(.radio-group) {
   align-items: center;
 }
