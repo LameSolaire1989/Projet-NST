@@ -135,7 +135,7 @@
     const payload = {
       nom: formData.get("NomComplet") || "",
       courriel: formData.get("Courriel") || "",
-      commission: formData.get("CommissionScolaire") || "",
+      etablissement: formData.get("Etablissement") || "",
       clientNST: formData.get("DejaClientNST") || "",
       clientRoboPack: formData.get("DejaClientRoboPack") || "",
       score: formData.get("ScoreObtenu") ? Number(formData.get("ScoreObtenu")) : null,
