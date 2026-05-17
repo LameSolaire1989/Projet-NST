@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Demande de Licence RoboPack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="form-shell">
+    <div class="form-header">
+      <div class="logo-wrapper">
+        <img src="../logo-robopack.png" alt="RoboPack" class="logo-robopack" />
+      </div>
+
+      <div class="form-title-group">
+        <h1>Licence<br />RoboPack</h1>
+        <p style="color: var(--accent); font-weight: 600; font-size: 0.85rem; margin-top: 8px;">NST Consultation – Partenaire expert en intégration RoboPack</p>
+      </div>
+
+      <div class="header-right">
+        <img src="../logo-nst.png" alt="NST Consultation" class="logo-nst" />
+      </div>
+    </div>
+
+    <form id="robopack-form">
+      <div class="form-field">
+        <label for="fullName">Nom complet</label>
+        <div class="input-shell">
+          <input type="text" id="fullName" name="NomComplet" autocomplete="name" placeholder="Prénom Nom" required />
+        </div>
+      </div>
+
+      <div class="field-row-2">
+        <div class="form-field">
+          <label for="email">Courriel</label>
+          <div class="input-shell">
+            <input type="email" id="email" name="Courriel" autocomplete="email" placeholder="prenom.nom@domaine.ca" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="etablissement">Établissement</label>
+          <div class="input-shell autocomplete-shell" id="etablissement-wrapper">
+            <input
+              type="text"
+              id="etablissement"
+              name="Etablissement"
+              placeholder="Tapez pour chercher votre établissement…"
+              autocomplete="off"
+              required
+            />
+            <ul id="etablissement-autocomplete" class="autocomplete-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="nombreAppareils">Nombre d'appareils dans votre établissement</label>
+        <div class="input-shell custom-select-shell">
+          <select id="nombreAppareils" name="NombreAppareils" required>
+            <option value="" disabled selected>Sélectionnez une plage...</option>
+            <option value="1-500">1 - 500</option>
+            <option value="500-2000">500 - 2000</option>
+            <option value="2000-5000">2000 - 5000</option>
+            <option value="5000-15000">5000 - 15000</option>
+            <option value="+15000">+15000</option>
+          </select>
+          <div class="select-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Consentement</label>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-label">
+            <input type="checkbox" id="consentement" name="Consentement" required />
+            <span class="checkbox-custom"></span>
+            J'accepte d'être contacté(e) concernant cette demande de licence et les services associés (Loi 25).
+          </label>
+        </div>
+      </div>
+
+      <input type="hidden" name="SourceFormulaire" value="Demande Licence RoboPack" />
+
+      <div class="form-footer">
+        <button type="submit" class="submit-btn">Déverrouiller mon offre partenaire</button>
+        <div class="status-message" id="statusMessage"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Animation de succès -->
+  <div id="successToast" class="success-toast">
+    <div class="success-icon">
+      <span class="checkmark-stem"></span>
+      <span class="checkmark-kick"></span>
+    </div>
+    <div class="success-text">Demande envoyée !<br><span style="font-size:0.75rem; color:rgba(255,255,255,0.7); font-weight:normal;">Un courriel vous a été envoyé.</span></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+  document.getElementById('robopack-form').addEventListener('submit', async function(e) {
+      e.preventDefault(); // Empêche le rechargement de la page
+
+      // 1. Récupération des données du formulaire avec les ID ajustés
+      const payload = {
+          nomComplet: document.getElementById('fullName').value,
+          courriel: document.getElementById('email').value,
+          etablissement: document.getElementById('etablissement').value,
+          nombreAppareils: parseInt(document.getElementById('nombreAppareils').value) || 0,
+          consentement: document.getElementById('consentement').checked
+      };
+
+      // 2. URL secrète Power Automate intégrée d'origine
+      const powerAutomateUrl = "https://default3d2e2497f4f140a482ea11a31347e3.79.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/53a4d105c78840a0953692bc19ec1c17/triggers/manual/paths/invoke?api-version=1";
+
+      const submitBtn = this.querySelector('.submit-btn');
+      const statusEl = document.getElementById('statusMessage');
+      const successToast = document.getElementById('successToast');
+      
+      function setStatus(message, type) {
+        statusEl.textContent = message || "";
+        statusEl.className = "status-message" + (type ? " " + type : "");
+      }
+
+      setStatus("Envoi en cours…", "");
+      submitBtn.disabled = true;
+
+      try {
+          // 3. Envoi de la requête HTTP POST
+          const response = await fetch(powerAutomateUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+          });
+
+          if (response.ok) {
+              setStatus("Merci ! Votre demande a été envoyée. Un courriel de confirmation suivra.", "success");
+              if (successToast) {
+                successToast.classList.add("is-visible");
+                window.setTimeout(() => {
+                  successToast.classList.remove("is-visible");
+                }, 2600);
+              }
+              this.reset(); // Vide le formulaire
+          } else {
+              setStatus("Oups, une erreur est survenue lors de l'envoi. Veuillez réessayer.", "error");
+          }
+      } catch (error) {
+          console.error('Erreur réseau :', error);
+          setStatus("Impossible de joindre le serveur. Vérifiez votre connexion.", "error");
+      } finally {
+          submitBtn.disabled = false;
+      }
+  });
+  </script>
+</body>
+</html>
