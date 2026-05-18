@@ -86,17 +86,17 @@
         <label>Services souhaités</label>
         <div class="checkbox-wrapper" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px;">
           <label class="checkbox-label">
-            <input type="checkbox" id="offreNST" name="OffreNST" />
+            <input type="checkbox" id="chk-nst" name="serviceNST" />
             <span class="checkbox-custom"></span>
             Offre de service NSTconsultation
           </label>
           <label class="checkbox-label">
-            <input type="checkbox" id="essaiRobopack" name="EssaiRobopack" />
+            <input type="checkbox" id="chk-robopack" name="serviceRobopack" />
             <span class="checkbox-custom"></span>
             Version d'essai Robopack
           </label>
           <label class="checkbox-label">
-            <input type="checkbox" id="essaiTenantManager" name="EssaiTenantManager" />
+            <input type="checkbox" id="chk-tenant" name="serviceTenantManager" />
             <span class="checkbox-custom"></span>
             Version d'essai Tenant Manager
           </label>
@@ -145,9 +145,9 @@
         courriel: document.getElementById('email').value,
         etablissement: document.getElementById('etablissement').value,
         nombreAppareils: document.getElementById('nombreAppareils').value,
-        offreNST: document.getElementById('offreNST').checked,
-        essaiRobopack: document.getElementById('essaiRobopack').checked,
-        essaiTenantManager: document.getElementById('essaiTenantManager').checked,
+        serviceNST: document.getElementById('chk-nst').checked,
+        serviceRobopack: document.getElementById('chk-robopack').checked,
+        serviceTenantManager: document.getElementById('chk-tenant').checked,
         consentement: document.getElementById('consentement').checked
       };
 
