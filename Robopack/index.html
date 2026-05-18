@@ -151,9 +151,6 @@
         consentement: document.getElementById('consentement').checked
       };
 
-      // 2. URL secrète Power Automate intégrée d'origine
-      const powerAutomateUrl = "https://default3d2e2497f4f140a482ea11a31347e3.79.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/53a4d105c78840a0953692bc19ec1c17/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qRGcAW6AthhkonG7yvETtK1EtXKTfwpp6fNqHCPeUB4";
-
       const submitBtn = this.querySelector('.submit-btn');
       const statusEl = document.getElementById('statusMessage');
       const successToast = document.getElementById('successToast');
@@ -162,6 +159,15 @@
         statusEl.textContent = message || "";
         statusEl.className = "status-message" + (type ? " " + type : "");
       }
+
+      // Validation : Au moins 1 service doit être coché
+      if (!payload.serviceNST && !payload.serviceRobopack && !payload.serviceTenantManager) {
+        setStatus("Veuillez sélectionner au moins un service souhaité.", "error");
+        return;
+      }
+
+      // 2. URL secrète Power Automate intégrée d'origine
+      const powerAutomateUrl = "https://default3d2e2497f4f140a482ea11a31347e3.79.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/53a4d105c78840a0953692bc19ec1c17/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qRGcAW6AthhkonG7yvETtK1EtXKTfwpp6fNqHCPeUB4";
 
       setStatus("Envoi en cours…", "");
       submitBtn.disabled = true;
