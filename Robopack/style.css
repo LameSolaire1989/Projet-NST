@@ -1,5 +1,5 @@
 :root {
-  --bg-main: #0C0A19; /* Violet très foncé issu du site RoboPack */
+  --bg-main: #0C0A19; /* Violet très foncé issu du site Robopack */
   --card-bg: #141126; /* Violet foncé pour le formulaire */
   --text-main: #FFFFFF;
   --accent: #9D4EDD; /* Violet/Magenta brillant */
@@ -40,7 +40,7 @@ body {
   overflow-y: auto;
 }
 
-/* Fond plexus / réseau haute technologie - Adapté pour RoboPack (violet) */
+/* Fond plexus / réseau haute technologie - Adapté pour Robopack (violet) */
 body::before {
   content: "";
   position: absolute;
@@ -93,33 +93,38 @@ body::after {
 
 .form-header {
   margin-bottom: 22px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 16px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .logo-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 16px;
 }
 
-/* Inversé la logique : RoboPack en grand à gauche, NST à droite */
 .logo-robopack {
-  height: 80px; 
+  height: 60px; 
   width: auto;
+}
+
+.logo-tenant {
+  height: 25px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.logo-plus {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.8rem;
 }
 
 .logo-nst {
-  height: 60px;
+  height: 90px;
   width: auto;
-  filter: 
-    brightness(0) invert(1)
-    drop-shadow(0 0 8px rgba(157, 78, 221, 0.4));
-  opacity: 0.7;
 }
 
 .header-right {
@@ -571,16 +576,12 @@ input:-webkit-autofill:active {
   }
 
   .form-header {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    text-align: center;
-    gap: 12px;
+    gap: 16px;
   }
 
   .logo-wrapper {
-    grid-column: 1;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .form-title-group h1 {
