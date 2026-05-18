@@ -107,7 +107,7 @@
         <label>Consentement</label>
         <div class="checkbox-wrapper">
           <label class="checkbox-label">
-            <input type="checkbox" id="consentement" name="Consentement" required />
+            <input type="checkbox" id="consentement" name="Consentement" />
             <span class="checkbox-custom"></span>
             J'accepte d'être contacté(e) concernant cette demande de version d'essai et les services associés (Loi 25).
           </label>
@@ -163,6 +163,12 @@
       // Validation : Au moins 1 service doit être coché
       if (!payload.serviceNST && !payload.serviceRobopack && !payload.serviceTenantManager) {
         setStatus("Veuillez sélectionner au moins un service souhaité.", "error");
+        return;
+      }
+
+      // Validation : Consentement obligatoire
+      if (!payload.consentement) {
+        setStatus("Veuillez cocher la case de consentement pour poursuivre.", "error");
         return;
       }
 
